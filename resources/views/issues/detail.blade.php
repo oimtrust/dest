@@ -129,8 +129,7 @@
                     <p>{{ $comment->comment }}</p>
                     @if ($comment->attachment)
                         <a href="{{ asset('storage/' . $comment->attachment) }}" target="_blank"><p>{{ $comment->attachment_slug }}</p></a>
-                        @else
-                        @endif
+                    @endif
                     @if (Auth::user()->id == $comment->created_by)
                         <footer class="blockquote-footer text-right">{{ $comment->createdUser->name }}</footer> <br/>
                     @else

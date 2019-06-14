@@ -59,25 +59,41 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <i class="mdi mdi-bell-outline"></i>
-                    <span class="count-symbol bg-danger"></span>
+                <i class="mdi mdi-bell-outline"></i>
+                @if (getNotification() != NULL)
+                @if (getNotification()->count())
+                <span class="count-symbol bg-danger"></span>
+                @endif
+                @endif
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
             <h6 class="p-3 mb-0">Notifications</h6>
+            @foreach (getNotification() as $notification)
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                    <img src="{{ asset('images/face.jpg') }}" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                <p class="text-gray mb-0">
-                    1 Minutes ago
-                </p>
-                </div>
-            </a>
+            @if (getNotification() != NULL)
+                <a class="dropdown-item preview-item" href="{{ route('issues.detail', ['issue_id' => $notification->issue_id]) }}">
+                    <div class="preview-thumbnail">
+                        @if ($notification->user->avatar == NULL)
+                        <img src="{{ asset('images/face.jpg') }}" alt="image" class="profile-pic">
+                        @else
+                        <img src="{{ asset('storage/' . $notification->user->avatar) }}" alt="image" class="profile-pic">
+                        @endif
+                    </div>
+                    <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h5 class="preview-subject ellipsis mb-1 font-weight-normal"> {{ $notification->createdUser->name }}</h5>
+                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal"> {{ $notification->comment }}</h6>
+                    <p class="text-gray mb-0">
+                        {{ \Carbon\Carbon::parse($notification->updated_at)->diffForHumans() }}
+                    </p>
+                    </div>
+                </a>
+
+            @endif
+            @endforeach
             <div class="dropdown-divider"></div>
-            <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+            @if (getNotification() != NULL)
+            <h6 class="p-3 mb-0 text-center">Show More...</h6>
+            @endif
             </div>
         </li>
         </ul>

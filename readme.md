@@ -22,6 +22,7 @@ You can read this article : [Fork a Repo](https://help.github.com/en/articles/fo
 - Run the command `composer install` to install all the dependencies
 - Run the command `php artisan key:generate` to generate the new key
 - Run the command `php artisan migrate:fresh --seed`
+- Run the command `php artisan storage:link`
 - Run the command `php artisan serve`. This will open Dest app in your browser
 - Make your valuable contribution
 - Submit a pull request.

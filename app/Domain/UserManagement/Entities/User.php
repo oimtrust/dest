@@ -3,10 +3,11 @@
 namespace App\Domain\UserManagement\Entities;
 
 use Illuminate\Notifications\Notifiable;
+use App\Domain\Executions\Entities\Issue;
 use App\Domain\Projects\Entities\Project;
+use App\Domain\Executions\Entities\Comment;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Domain\Executions\Entities\Issue;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,11 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->belongsToMany(Project::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'created_by');
     }
 
     public function issues()
