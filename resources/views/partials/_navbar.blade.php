@@ -71,7 +71,7 @@
             @foreach (getNotification() as $notification)
             <div class="dropdown-divider"></div>
             @if (getNotification() != NULL)
-                <a class="dropdown-item preview-item" href="{{ route('issues.detail', ['issue_id' => $notification->issue_id]) }}">
+                <a class="dropdown-item preview-item" href="{{ route('notifications.read', ['issue_id' => $notification->issue_id]) }}">
                     <div class="preview-thumbnail">
                         @if ($notification->user->avatar == NULL)
                         <img src="{{ asset('images/face.jpg') }}" alt="image" class="profile-pic">
@@ -92,7 +92,7 @@
             @endforeach
             <div class="dropdown-divider"></div>
             @if (getNotification() != NULL)
-            <h6 class="p-3 mb-0 text-center">Show More...</h6>
+            <h6 class="p-3 mb-0 text-center"><a href="{{ route('notifications.index') }}">Show More...</a></h6>
             @endif
             </div>
         </li>

@@ -10,7 +10,7 @@ function getNotification()
     $user           = User::find(Auth::user()->id);
 
     $issues       = Issue::with(['comments' => function ($query) use ($user) {
-                        $query->where('created_by', '!=', $user->id);
+                        $query->where('created_by', '!=', $user->id)->where('status', '!=', 'read');
                     }])->where('assigned_to', $user->id)->orWhere('created_by', $user->id)->get();
     $notifications = $issues->flatMap(function ($issue) {
         return $issue->comments;
