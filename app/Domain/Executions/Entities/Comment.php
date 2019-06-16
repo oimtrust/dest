@@ -13,6 +13,11 @@ class Comment extends Model
         return $this->belongsTo(Issue::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function createdUser()
     {
         return $this->belongsTo(User::class, 'created_by');
