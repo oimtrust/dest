@@ -147,3 +147,9 @@ Route::get('/issues', 'Executions\IssueController@index')->name('issues.index');
  * Comment
  */
 Route::post('/comment/store/{id}', 'Executions\CommentController@store')->name('comment.store');
+
+/**
+ * Notifications
+ */
+Route::get('/notifications/{id}/read', 'Notifications\NotificationController@read')->name('notifications.read');
+Route::get('/notifications', 'Notifications\NotificationController@index')->name('notifications.index');
