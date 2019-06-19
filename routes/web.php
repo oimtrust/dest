@@ -35,6 +35,11 @@ Route::get('/users/trash', 'UserManagement\UserController@trash')->name('users.t
 Route::resource('users', 'UserManagement\UserController');
 
 /**
+ * Roles
+ */
+Route::resource('roles', 'UserManagement\RoleController');
+
+/**
  * Profile
  */
 Route::put('profile/updatepassword', 'UserManagement\ProfileController@updatePassword')->name('updatePassword');

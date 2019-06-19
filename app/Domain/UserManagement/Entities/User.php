@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Domain\Executions\Entities\Issue;
 use App\Domain\Projects\Entities\Project;
 use App\Domain\Executions\Entities\Comment;
+use App\Domain\UserManagement\Entities\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -43,7 +44,7 @@ class User extends Authenticatable
 
     public function hasRole($slug)
     {
-        foreach ($this->roles() as $role) {
+        foreach ($this->jsonRoles() as $role) {
             if ($role == $slug) {
                 return true;
             }
@@ -51,9 +52,14 @@ class User extends Authenticatable
         return false;
     }
 
-    public function roles()
+    public function jsonRoles()
     {
         return json_decode($this->roles);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 
     public function projects()

@@ -33,6 +33,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('roles.index') }}">
+              <span class="menu-title">Roles</span>
+              <i class="mdi mdi-account-key-outline menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('projects.index') }}">
                 <span class="menu-title">Projects</span>
                 <i class="mdi mdi-briefcase-outline menu-icon"></i>
