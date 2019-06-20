@@ -18,6 +18,16 @@
     </nav>
     </div>
     <div class="row">
+
+    @if (session('status'))
+    <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
+        {{ session('status') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-danger card-img-holder text-white">
         <div class="card-body">

@@ -6,19 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Gate;
 use App\Domain\Projects\Entities\Project;
 use App\Domain\UserManagement\Entities\User;
 
 class ProjectController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (Gate::allows('manage-projects')) return $next($request);
-            abort(403, "You don't have access!");
-        });
-    }
 
     /**
      * Display a listing of the resource.

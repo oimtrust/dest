@@ -23,7 +23,6 @@ $factory->define(User::class, function (Faker $faker) {
         'email'             => $faker->unique()->safeEmail,
         'password'          => Hash::make('rahasia'),
         'remember_token'    => Str::random(10),
-        'roles'             => json_encode(['ADMIN', 'PM', 'DEV', 'QA']),
         'address'           => $faker->address,
         'phone'             => $faker->phoneNumber,
         'status'            => 'ACTIVE',

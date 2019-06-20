@@ -22,7 +22,7 @@ Trashed Projects
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Filters</h4>
-                <form action="{{ route('projects.trash') }}">
+                <form action="{{ route('trash.projects') }}">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">

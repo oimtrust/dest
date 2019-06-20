@@ -12,6 +12,14 @@
                         </div>
                         <h4>Hello! let's get started</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
+                        @if (session('status'))
+                        <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
                         <form class="pt-3" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">

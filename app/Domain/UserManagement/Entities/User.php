@@ -42,19 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hasRole($slug)
+    public function hasAccess($operation, $permission)
     {
-        foreach ($this->jsonRoles() as $role) {
-            if ($role == $slug) {
+        foreach ($this->roles as $key => $role) {
+            if ($role->can($operation, $permission)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public function jsonRoles()
-    {
-        return json_decode($this->roles);
     }
 
     public function roles()

@@ -36,11 +36,6 @@ Detail User
                     </div>
 
                     <div class="form-group">
-                        <label class="">Roles</label>
-                        @include('users._roles-show')
-                    </div>
-
-                    <div class="form-group">
                         <label>Status</label>
                         <div class="row">
                             <div class="col-sm-2">

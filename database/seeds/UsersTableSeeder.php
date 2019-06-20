@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
             'email'     => 'admin@gmail.com',
             'password'  => Hash::make('rahasia'),
             'phone'     => '089898989898',
-            'roles'     => json_encode(['ADMIN', 'PM', 'DEV', 'QA']),
             'address'   => 'Malang, Jawa Timur',
             'status'    => 'ACTIVE',
             'created_by' => 1

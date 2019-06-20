@@ -51,12 +51,6 @@ Profile
                             </div>
 
                             <div class="form-group">
-                                <label class="">Roles</label>
-                                @include('profile._roles-show')
-                            </div>
-
-
-                            <div class="form-group">
                                 <label for="phone">Phone</label>
                                 <input type="text" class="form-control" id="phone" disabled value="{{ $profile->phone }}">
                             </div>
