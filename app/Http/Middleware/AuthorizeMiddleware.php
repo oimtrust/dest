@@ -4,25 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\UserManagement\UserRepository;
 
 class AuthorizeMiddleware
 {
-    /**
-     * instance of UserRepository
-     * @var UserRepository
-     */
-    private $userRepository;
-
-
-    /**
-     * Make new instance of AuthorizeMiddleware
-     * @param UserRepository
-     */
-    public function __construct(UserRepository $userRepository) {
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Handle an incoming request.
      *

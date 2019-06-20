@@ -22,7 +22,7 @@ Trashed Scenarios
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Filters</h4>
-                <form action="{{ route('scenarios.trash') }}">
+                <form action="{{ route('trash.scenarios') }}">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">

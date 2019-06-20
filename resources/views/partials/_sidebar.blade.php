@@ -71,12 +71,14 @@
             </li>
         @endif
 
+        @if (Auth::user()->roles()->where('slug', '!=', 'quality-assurance')->where('slug', '!=', 'project-manager')->first())
         <li class="nav-item">
             <a class="nav-link" href="{{ route('issues.index') }}">
                 <span class="menu-title">My Issues</span>
                 <i class="mdi mdi-bug-outline menu-icon"></i>
             </a>
         </li>
+        @endif
 
         @if (Auth::user()->roles()->where('slug', 'admin')->first())
             <li class="nav-item">
@@ -87,13 +89,13 @@
                 </a>
                 <div class="collapse" id="trash">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('users.trash') }}">Users</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('trash.users') }}">Users</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('trash.projects') }}">Projects</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('trash.stories') }}">Stories</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('features.trash') }}">Features</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('scenarios.trash') }}">Scenarios</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('testcases.trash') }}">Testcases</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('issues.trash') }}">Issues</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('trash.features') }}">Features</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('trash.scenarios') }}">Scenarios</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('trash.testcases') }}">Testcases</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('trash.issues') }}">Issues</a></li>
                     </ul>
                 </div>
             </li>
