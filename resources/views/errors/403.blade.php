@@ -15,8 +15,8 @@
                 <h1 class="display-1 mb-0">403</h1>
               </div>
               <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                <h2>SORRY!</h2>
-                <h3 class="font-weight-light">{{ $exception->getMessage() }}!</h3>
+                <h2>FORBIDDEN!</h2>
+                <h3 class="font-weight-light">Access to this resource on the server is denied!</h3>
               </div>
             </div>
             <div class="row mt-5">
@@ -26,7 +26,7 @@
             </div>
             <div class="row mt-5">
               <div class="col-12 mt-xl-2">
-                <p class="text-white font-weight-medium text-center">Copyright &copy; 2019  All rights reserved.</p>
+                <p class="text-white font-weight-medium text-center">Copyright &copy; 2019 Dest. All rights reserved.</p>
               </div>
             </div>
           </div>

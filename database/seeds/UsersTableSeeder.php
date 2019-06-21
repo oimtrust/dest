@@ -1,8 +1,9 @@
 <?php
 
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Domain\UserManagement\Entities\User;
+use App\Domain\UserManagement\Entities\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,26 +19,15 @@ class UsersTableSeeder extends Seeder
             'email'     => 'admin@gmail.com',
             'password'  => Hash::make('rahasia'),
             'phone'     => '089898989898',
-            'roles'     => json_encode(['ADMIN', 'PM', 'DEV', 'QA']),
             'address'   => 'Malang, Jawa Timur',
             'status'    => 'ACTIVE',
             'created_by' => 1
         ]);
 
-        $users  = [];
-        $faker  = Factory::create();
-        for ($i=0; $i < 10; $i++) {
-            $users[$i] = [
-                'name'      => $faker->name,
-                'email'     => $faker->unique()->freeEmail,
-                'password'  => Hash::make('rahasia'),
-                'phone'     => $faker->tollFreePhoneNumber,
-                'roles'     => json_encode(['PM', 'DEV', 'QA']),
-                'address'   => $faker->address,
-                'status'    => rand(0, 1) ? 'ACTIVE' : 'INACTIVE',
-                'created_by' => 1
-            ];
-        }
-        DB::table('users')->insert($users);
+        User::find(1)->roles()->attach(Role::findBySlug('admin')->id);
+
+        // factory(User::class, 50)->create()->each(function ($user) {
+        //     $user->roles()->attach(Role::inRandomOrder()->first()->id);
+        // });
     }
 }
