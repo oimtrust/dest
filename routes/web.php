@@ -170,6 +170,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::prefix('users')->middleware(['authenticated', 'authorize:admin'])->group(function () {
         Route::delete('/{id}/delete-permanent', 'UserManagement\UserController@deletePermanent')->name('users.delete-permanent');
         Route::get('/{id}/restore', 'UserManagement\UserController@restore')->name('users.restore');
+        Route::get('/role/{id}', 'UserManagement\UserRoleController@findRoleByUser')->name('users.role');
     });
     Route::get('/trash/users', 'UserManagement\UserController@trash')->name('trash.users')->middleware(['authenticated', 'authorize:admin']);
     Route::resource('users', 'UserManagement\UserController')->middleware(['authenticated', 'authorize:admin']);
@@ -178,6 +179,11 @@ Route::middleware(['authenticated'])->group(function () {
     /**
      * Roles
      */
+    Route::prefix('userrole')->middleware(['authenticated', 'authorize:admin'])->group(function () {
+        Route::put('/attachRole/{id}', 'UserManagement\UserRoleController@attachRole')->name('userrole.attachRole');
+        Route::get('/', 'UserManagement\UserRoleController@index')->name('userrole.index');
+    });
+    Route::get('/ajaxSearchRole', 'UserManagement\UserRoleController@ajaxSearchRole')->name('ajaxSearchRole');
     Route::resource('roles', 'UserManagement\RoleController')->middleware(['authenticated', 'authorize:admin']);
 });
 

@@ -34,10 +34,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('roles.index') }}">
-                  <span class="menu-title">Roles</span>
-                  <i class="mdi mdi-account-key-outline menu-icon"></i>
+                <a class="nav-link" data-toggle="collapse" href="#trash" aria-expanded="false" aria-controls="trash">
+                    <span class="menu-title">User Privileges</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-account-key-outline menu-icon"></i>
                 </a>
+                <div class="collapse" id="trash">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('userrole.index') }}">User Roles</a></li>
+                    </ul>
+                </div>
             </li>
         @endif
 

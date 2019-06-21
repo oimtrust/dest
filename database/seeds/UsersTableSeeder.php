@@ -26,8 +26,8 @@ class UsersTableSeeder extends Seeder
 
         User::find(1)->roles()->attach(Role::findBySlug('admin')->id);
 
-        factory(User::class, 50)->create()->each(function ($user) {
-            $user->roles()->attach(Role::inRandomOrder()->first()->id);
-        });
+        // factory(User::class, 50)->create()->each(function ($user) {
+        //     $user->roles()->attach(Role::inRandomOrder()->first()->id);
+        // });
     }
 }

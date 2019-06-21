@@ -42,16 +42,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hasAccess($operation, $permission)
-    {
-        foreach ($this->roles as $key => $role) {
-            if ($role->can($operation, $permission)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function roles()
     {
         return $this->belongsToMany(Role::class);
