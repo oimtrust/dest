@@ -43,14 +43,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">User Role List</h4>
-                {{-- @if (session('status'))
-                    <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
-                        {{ session('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif --}}
+                
                 <div id="alertTarget"></div>
 
                 <table class="table table-hover table-responsive-xl">

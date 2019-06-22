@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\UserManagement;
 
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Domain\UserManagement\Entities\Role;
 use App\Domain\UserManagement\Entities\User;
@@ -29,9 +31,22 @@ class UserRoleController extends Controller
 
     public function attachRole(Request $request, $id)
     {
-        $user   = User::find($id);
+        try {
+            DB::beginTransaction();
 
-        $user->roles()->sync($request->get('roles'));
+            $user   = User::find($id);
+            if ($user->id == '1') {
+                if ($user->roles()->slug == 'admin') {
+
+                }
+            }
+            $user->roles()->sync($request->get('roles'));
+
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+
     }
 
     public function findRoleByUser($id)

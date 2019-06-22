@@ -41,10 +41,12 @@
 $( document ).ready(function() {
 
     var status = JSON.parse(localStorage.getItem('status'));
+    var userId = 0;
+    var roleId = 0;
 
     if (status != null) {
         var templateAlert = `
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-`+ status[0].type +` alert-dismissible fade show" role="alert">
             `+ status[0].status +`
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span id="clearStatus" aria-hidden="true">&times;</span>
@@ -58,7 +60,6 @@ $( document ).ready(function() {
         localStorage.removeItem('status')
     })
 
-    var userId = 0;
 
     $('#attachRole').submit(function(event) {
         event.preventDefault();
@@ -67,14 +68,24 @@ $( document ).ready(function() {
         var url = "/userrole/attachRole/" + userId;
         var formData = $('#attachRole').serialize();
 
+        if((userId == 1 && roleId == 1) && document.getElementById("roles").value != 1){
+            var array = [{
+                status : 'The admin role cannot be deleted',
+                type: "danger"
+            }];
+        } else{
+            var array = [{
+                status : 'The Role has been selected',
+                type: "success"
+            }];
+        }
+
         $.ajax({
-            type: 'POST',
+            type: 'PUT',
             url: url,
             data : formData
         }).done(function() {
-            var array = [{
-                status : 'The Role has been selected'
-            }];
+            localStorage.removeItem('status');
             localStorage.setItem('status', JSON.stringify(array));
             window.location.href = "{{ route('userrole.index') }}"
         });
@@ -84,10 +95,10 @@ $( document ).ready(function() {
         userId  = $(this).attr('setid');
 
         var dataId = $(this).data('x');
+        var $option = []
+        var $selectedOption = []
 
         $('#create').modal("show");
-        var $option = [];
-        var $selectedOption = [];
         //setting value select2
         $.ajax({
             type: "get",
@@ -114,8 +125,10 @@ $( document ).ready(function() {
                     $selectedOption.push([value.id]);
                 });
                 $("#roles").val($selectedOption).trigger('change');
+                roleId = document.getElementById("roles").value
             }
         });
+
     });
 
 });
