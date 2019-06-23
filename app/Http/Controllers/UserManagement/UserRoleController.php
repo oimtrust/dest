@@ -36,7 +36,7 @@ class UserRoleController extends Controller
 
             $user   = User::find($id);
             if ($user->id == '1') {
-                if ($user->roles()->slug == 'admin') {
+                if ($user->findBySlug('admin')) {
 
                 }
             }
