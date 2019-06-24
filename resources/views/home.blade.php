@@ -31,36 +31,38 @@
     <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-danger card-img-holder text-white">
         <div class="card-body">
-            <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+            <img src="{{ asset('images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image"/>
             <h4 class="font-weight-normal mb-3">Projects
-            <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+            <i class="mdi mdi-briefcase-outline mdi-24px float-right"></i>
             </h4>
-            <h2 class="mb-5">$ 15,0000</h2>
-            <h6 class="card-text">Increased by 60%</h6>
+            <h2 class="mb-5">{{ $projects->count() }}</h2>
+            <h6 class="card-text">Active Projects : {{ $activeProject->count() }}</h6>
+            <h6 class="card-text">Inactive Projects : {{ $inactiveProject->count() }}</h6>
         </div>
         </div>
     </div>
     <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-info card-img-holder text-white">
         <div class="card-body">
-            <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+            <img src="{{ asset('images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image"/>
             <h4 class="font-weight-normal mb-3">Test Cases
-            <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+            <i class="mdi mdi-checkbox-multiple-marked-outline mdi-24px float-right"></i>
             </h4>
-            <h2 class="mb-5">45,6334</h2>
-            <h6 class="card-text">Decreased by 10%</h6>
+            <h2 class="mb-5">{{ $testcases->count() }}</h2>
+            <h6 class="card-text">Pass Testcases : {{ $passTestcase->count() }}</h6>
+            <h6 class="card-text">Fail Testcases : {{ $failTestcase->count() }}</h6>
         </div>
         </div>
     </div>
     <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-success card-img-holder text-white">
         <div class="card-body">
-            <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
+            <img src="{{ asset('images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image"/>
             <h4 class="font-weight-normal mb-3">Issues
-            <i class="mdi mdi-diamond mdi-24px float-right"></i>
+            <i class="mdi mdi-bug-outline mdi-24px float-right"></i>
             </h4>
-            <h2 class="mb-5">95,5741</h2>
-            <h6 class="card-text">Increased by 5%</h6>
+            <h2 class="mb-5">{{ $issues->count() }}</h2>
+            <h6 class="card-text">Finished Issues : {{ $finishedIssue->count() }}</h6>
         </div>
         </div>
     </div>
