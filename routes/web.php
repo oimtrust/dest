@@ -134,7 +134,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::prefix('testcases')->middleware(['authenticated', 'authorize:admin,quality-assurance'])->group(function () {
         Route::delete('/{id}/delete-permanent', 'Specifications\TestcaseController@deletePermanent')->name('testcases.delete-permanent');
         Route::get('/{id}/restore', 'Specifications\TestcaseController@restore')->name('testcases.restore');
-        Route::delete('/{id}/destroy', 'Specifications\TestcaseController@destroy')->name('testcases.destroy');
+        Route::delete('/{project_id}/{testcase_id}/destroy', 'Specifications\TestcaseController@destroy')->name('testcases.destroy');
         Route::put('/update/{testcase_id}/{project_id}', 'Specifications\TestcaseController@update')->name('testcases.update');
         Route::get('/edit/{project_id}/{testcase_id}', 'Specifications\TestcaseController@edit')->name('testcases.edit');
         Route::get('/show/{project_id}/{testcase_id}', 'Specifications\TestcaseController@show')->name('testcases.show');

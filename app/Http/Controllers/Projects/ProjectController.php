@@ -214,9 +214,9 @@ class ProjectController extends Controller
         if ($project->trashed()) {
             $project->restore();
         } else {
-            return redirect()->route('projects.trash')->with('status', 'Project is not in trash');
+            return redirect()->route('trash.projects')->with('status', 'Project is not in trash');
         }
-        return redirect()->route('projects.trash')->with('status', 'Project successfully restored');
+        return redirect()->route('trash.projects')->with('status', 'Project successfully restored');
     }
 
     public function deletePermanent($id)
@@ -225,7 +225,7 @@ class ProjectController extends Controller
         $logo       = $project->logo;
 
         if (!$project->trashed()) {
-            return redirect()->route('projects.trash')->with('status', 'Can not delete permanent active project');
+            return redirect()->route('trash.projects')->with('status', 'Can not delete permanent active project');
         } else {
             $project->forceDelete();
 
@@ -238,7 +238,7 @@ class ProjectController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('projects.trash')->with('status', 'Project permanently deleted!');
+            return redirect()->route('trash.projects')->with('status', 'Project permanently deleted!');
         }
     }
 }

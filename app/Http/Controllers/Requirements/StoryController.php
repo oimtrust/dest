@@ -170,9 +170,9 @@ class StoryController extends Controller
         if ($story->trashed()) {
             $story->restore();
         } else {
-            return redirect()->route('stories.trash')->with('status', 'Story is not in trash');
+            return redirect()->route('trash.stories')->with('status', 'Story is not in trash');
         }
-        return redirect()->route('stories.trash')->with('status', 'Story successfully restored');
+        return redirect()->route('trash.stories')->with('status', 'Story successfully restored');
     }
 
     public function deletePermanent($id)
@@ -180,11 +180,11 @@ class StoryController extends Controller
         $story    = Story::onlyTrashed()->findOrFail($id);
 
         if (!$story->trashed()) {
-            return redirect()->route('stories.trash')->with('status', 'Can not delete permanent active story');
+            return redirect()->route('trash.stories')->with('status', 'Can not delete permanent active story');
         } else {
             $story->forceDelete();
         }
-        return redirect()->route('stories.trash')->with('status', 'Story permanently deleted!');
+        return redirect()->route('trash.stories')->with('status', 'Story permanently deleted!');
     }
 
 }
