@@ -158,9 +158,9 @@ class ScenarioController extends Controller
         if ($scenario->trashed()) {
             $scenario->restore();
         } else {
-            return redirect()->route('scenarios.trash')->with('status', 'Scenario is not in trash');
+            return redirect()->route('trash.scenarios')->with('status', 'Scenario is not in trash');
         }
-        return redirect()->route('scenarios.trash')->with('status', 'Scenario successfully restored');
+        return redirect()->route('trash.scenarios')->with('status', 'Scenario successfully restored');
     }
 
     public function deletePermanent($id)
@@ -168,11 +168,11 @@ class ScenarioController extends Controller
         $scenario    = Scenario::onlyTrashed()->findOrFail($id);
 
         if (!$scenario->trashed()) {
-            return redirect()->route('scenarios.trash')->with('status', 'Can not delete permanent active scenario');
+            return redirect()->route('trash.scenarios')->with('status', 'Can not delete permanent active scenario');
         } else {
             $scenario->forceDelete();
         }
-        return redirect()->route('scenarios.trash')->with('status', 'Scenario permanently deleted!');
+        return redirect()->route('trash.scenarios')->with('status', 'Scenario permanently deleted!');
     }
 
     public function ajaxSearchScenario(Request $request, $id)

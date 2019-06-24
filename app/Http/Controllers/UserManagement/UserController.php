@@ -196,9 +196,9 @@ class UserController extends Controller
         if ($user->trashed()) {
             $user->restore();
         } else {
-            return redirect()->route('users.trash')->with('status', 'User is not in trash');
+            return redirect()->route('trash.users')->with('status', 'User is not in trash');
         }
-        return redirect()->route('users.trash')->with('status', 'User successfully restored');
+        return redirect()->route('trash.users')->with('status', 'User successfully restored');
     }
 
     public function deletePermanent($id)
@@ -207,7 +207,7 @@ class UserController extends Controller
         $avatar  = $user->avatar;
 
         if (!$user->trashed()) {
-            return redirect()->route('users.trash')->with('status', 'Can not delete permanent active user');
+            return redirect()->route('trash.users')->with('status', 'Can not delete permanent active user');
         } else {
             $user->forceDelete();
 
@@ -220,7 +220,7 @@ class UserController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('users.trash')->with('status', 'User permanently deleted!');
+            return redirect()->route('trash.users')->with('status', 'User permanently deleted!');
         }
     }
 

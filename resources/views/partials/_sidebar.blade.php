@@ -89,12 +89,12 @@
 
         @if (Auth::user()->roles()->where('slug', 'admin')->first())
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#trash" aria-expanded="false" aria-controls="trash">
+                <a class="nav-link" data-toggle="collapse" href="#trashs" aria-expanded="false" aria-controls="trashs">
                     <span class="menu-title">Trash</span>
                     <i class="menu-arrow"></i>
                     <i class="mdi mdi-delete-variant menu-icon"></i>
                 </a>
-                <div class="collapse" id="trash">
+                <div class="collapse" id="trashs">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ route('trash.users') }}">Users</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('trash.projects') }}">Projects</a></li>

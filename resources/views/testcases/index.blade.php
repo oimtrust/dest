@@ -93,7 +93,7 @@ Testcases
                                         </button>
                                     </a>
 
-                                    <form method="POST" action="{{ route('testcases.destroy', ['id' => $testcase->id]) }}"
+                                    <form method="POST" action="{{ route('testcases.destroy', ['project_id' => $project->id, 'testcase_id' => $testcase->id]) }}"
                                         onsubmit="return confirm('Are you sure move this testcase to trash?')">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">

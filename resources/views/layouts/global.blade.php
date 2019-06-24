@@ -24,7 +24,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/dest-logos/favicon.png') }}" />
 </head>
-<body>
+<body onload="hideField()">
     <div class="container-scroller">
             <!-- partial:partials/_navbar -->
             @include('partials._navbar')
@@ -72,6 +72,11 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+function hideField() {
+    document.getElementById('other').style.display = 'none';
+}
 </script>
 <!-- End custom js for this page-->
 </body>

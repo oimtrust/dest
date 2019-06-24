@@ -61,7 +61,11 @@ class TestcaseController extends Controller
         $testcase->expected_result  = $request->get('expected_result');
         $testcase->description      = $request->get('description');
         $testcase->url              = $request->get('url');
-        $testcase->status           = $request->get('status');
+        if ($request->get('status') == 'Other'){
+            $testcase->status       = $request->get('other_status');
+        } elseif($request->get('other_status') == '') {
+            $testcase->status           = $request->get('status');
+        }
         $testcase->created_by       = Auth::user()->id;
 
         if ($request->file('picture')) {
@@ -115,6 +119,8 @@ class TestcaseController extends Controller
      */
     public function update(Request $request, $testcase_id, $project_id)
     {
+        // dd($request->all());
+
         $validation     = $request->validate([
             'scenario_id'   => 'required',
             'status'        => 'required',
@@ -127,7 +133,11 @@ class TestcaseController extends Controller
         $testcase->expected_result  = $request->get('expected_result');
         $testcase->description      = $request->get('description');
         $testcase->url              = $request->get('url');
-        $testcase->status           = $request->get('status');
+        if ($request->get('status') == 'Other'){
+            $testcase->status       = $request->get('other_status');
+        } elseif($request->get('other_status') == '') {
+            $testcase->status           = $request->get('status');
+        }
         $testcase->updated_by       = Auth::user()->id;
 
         if ($request->file('picture')) {
@@ -149,10 +159,10 @@ class TestcaseController extends Controller
      * @param  \App\Domain\Spesifications\Entities\Testcase  $testcase
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($project_id, $testcase_id)
     {
-        $project    = Project::find($id);
-        $testcase   = Testcase::find($id);
+        $project    = Project::find($project_id);
+        $testcase   = Testcase::find($testcase_id);
 
         $testcase->deleted_by   = Auth::user()->id;
         $testcase->save();
@@ -180,9 +190,9 @@ class TestcaseController extends Controller
         if ($testcase->trashed()) {
             $testcase->restore();
         } else {
-            return redirect()->route('testcases.trash')->with('status', 'Testcase is not in trash');
+            return redirect()->route('trash.testcases')->with('status', 'Testcase is not in trash');
         }
-        return redirect()->route('testcases.trash')->with('status', 'Testcase successfully restored');
+        return redirect()->route('trash.testcases')->with('status', 'Testcase successfully restored');
     }
 
     public function deletePermanent($id)
@@ -192,7 +202,7 @@ class TestcaseController extends Controller
         $picture  = $testcase->picture;
 
         if (!$testcase->trashed()) {
-            return redirect()->route('testcases.trash')->with('status', 'Can not delete permanent active testcase');
+            return redirect()->route('trash.testcases')->with('status', 'Can not delete permanent active testcase');
         } else {
             $testcase->forceDelete();
 
@@ -205,7 +215,7 @@ class TestcaseController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('testcases.trash')->with('status', 'Testcase permanently deleted!');
+            return redirect()->route('trash.testcases')->with('status', 'Testcase permanently deleted!');
         }
     }
 }

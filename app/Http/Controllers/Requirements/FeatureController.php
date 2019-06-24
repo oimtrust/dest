@@ -141,9 +141,9 @@ class FeatureController extends Controller
         if ($feature->trashed()) {
             $feature->restore();
         } else {
-            return redirect()->route('features.trash')->with('status', 'Feature is not in trash');
+            return redirect()->route('trash.features')->with('status', 'Feature is not in trash');
         }
-        return redirect()->route('features.trash')->with('status', 'Feature successfully restored');
+        return redirect()->route('trash.features')->with('status', 'Feature successfully restored');
     }
 
     public function deletePermanent($id)
@@ -151,11 +151,11 @@ class FeatureController extends Controller
         $feature    = Feature::onlyTrashed()->findOrFail($id);
 
         if (!$feature->trashed()) {
-            return redirect()->route('features.trash')->with('status', 'Can not delete permanent active feature');
+            return redirect()->route('trash.features')->with('status', 'Can not delete permanent active feature');
         } else {
             $feature->forceDelete();
         }
-        return redirect()->route('features.trash')->with('status', 'Feature permanently deleted!');
+        return redirect()->route('trash.features')->with('status', 'Feature permanently deleted!');
     }
 
     public function ajaxSearchFeature(Request $request, $id)
