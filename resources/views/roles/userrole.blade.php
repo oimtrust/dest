@@ -43,7 +43,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">User Role List</h4>
-                
+
                 <div id="alertTarget"></div>
 
                 <table class="table table-hover table-responsive-xl">
@@ -64,11 +64,13 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @foreach ($user->roles as $role)
-                                <span class="badge badge-success">{{ $role->name }} <a href="#"><i class="mdi mdi-close text-white"></i></a></span>
+                                <span class="badge badge-success">{{ $role->name }}</span>
                                 @endforeach
                             </td>
                             <td>
-                                <button type="button" class="btn btn-inverse-success btn-rounded btn-icon btn-role" setid="{{ $user->id }}" data-x="{{ $user->id }}"><i class="mdi mdi-plus"></i></button>
+                                @if ($user->id != 1)
+                                    <button type="button" class="btn btn-inverse-success btn-rounded btn-icon btn-role" setid="{{ $user->id }}" data-x="{{ $user->id }}"><i class="mdi mdi-plus"></i></button>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
