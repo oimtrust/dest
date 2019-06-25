@@ -28,7 +28,7 @@
             </div>
 
             <div class="nav-profile-text">
-                <p class="mb-1 text-black">{{ Auth::user()->name }}</p>
+                <p class="mb-1 text-black" id="clickName">{{ Auth::user()->name }}</p>
             </div>
             </a>
 
