@@ -24,32 +24,34 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/dest-logos/favicon.png') }}" />
 </head>
-<body>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar -->
-    @include('partials._navbar')
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar -->
-      @include('partials._sidebar')
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          @yield('content')
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer -->
-        @include('partials._footer')
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+<body onload="hideField()">
+    <div class="container-scroller">
+            <!-- partial:partials/_navbar -->
+            @include('partials._navbar')
+            <!-- partial -->
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:partials/_sidebar -->
+                @include('partials._sidebar')
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+                <!-- partial -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                    @yield('content')
+                    </div>
+                    <!-- content-wrapper ends -->
+                    <!-- partial:partials/_footer -->
+                    @include('partials._footer')
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+
+<!-- Scripts -->
+<script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
 <!-- plugins:js -->
 <script src="{{ asset('purpleadmin/js/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('purpleadmin/js/vendor.bundle.addons.js') }}"></script>
@@ -70,6 +72,11 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+function hideField() {
+    document.getElementById('other').style.display = 'none';
+}
 </script>
 <!-- End custom js for this page-->
 </body>

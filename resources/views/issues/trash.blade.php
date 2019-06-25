@@ -22,7 +22,7 @@ Trashed Issues
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Filters</h4>
-                <form action="{{ route('issues.trash') }}">
+                <form action="{{ route('trash.issues') }}">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">

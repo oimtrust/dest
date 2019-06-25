@@ -5,20 +5,12 @@ namespace App\Http\Controllers\Requirements;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use App\Domain\Projects\Entities\Project;
 use Illuminate\Support\Facades\Validator;
 use App\Domain\Requirements\Entities\Story;
 
 class StoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (Gate::allows('manage-stories')) return $next($request);
-            abort(403, "You don't have access!");
-        });
-    }
     /**
      * Display a listing of the resource.
      *
@@ -178,9 +170,9 @@ class StoryController extends Controller
         if ($story->trashed()) {
             $story->restore();
         } else {
-            return redirect()->route('stories.trash')->with('status', 'Story is not in trash');
+            return redirect()->route('trash.stories')->with('status', 'Story is not in trash');
         }
-        return redirect()->route('stories.trash')->with('status', 'Story successfully restored');
+        return redirect()->route('trash.stories')->with('status', 'Story successfully restored');
     }
 
     public function deletePermanent($id)
@@ -188,11 +180,11 @@ class StoryController extends Controller
         $story    = Story::onlyTrashed()->findOrFail($id);
 
         if (!$story->trashed()) {
-            return redirect()->route('stories.trash')->with('status', 'Can not delete permanent active story');
+            return redirect()->route('trash.stories')->with('status', 'Can not delete permanent active story');
         } else {
             $story->forceDelete();
         }
-        return redirect()->route('stories.trash')->with('status', 'Story permanently deleted!');
+        return redirect()->route('trash.stories')->with('status', 'Story permanently deleted!');
     }
 
 }

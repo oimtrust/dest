@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Domain\Executions\Entities\Issue;
 use App\Domain\Projects\Entities\Project;
 use App\Domain\Executions\Entities\Comment;
+use App\Domain\UserManagement\Entities\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,19 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hasRole($slug)
-    {
-        foreach ($this->roles() as $role) {
-            if ($role == $slug) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function roles()
     {
-        return json_decode($this->roles);
+        return $this->belongsToMany(Role::class);
     }
 
     public function projects()

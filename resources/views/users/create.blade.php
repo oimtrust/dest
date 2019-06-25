@@ -76,52 +76,6 @@ Create User
                     </div>
 
                     <div class="form-group">
-                        <label class="">Roles</label>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input @error('roles') is-invalid @enderror" name="roles[]" id="admin" value="ADMIN">
-                                    Admin
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="roles[]" id="pm" value="PM">
-                                    Project Manager
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="roles[]" id="qa" value="QA">
-                                    Quality Assurance
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="roles[]" id="dev" value="DEV">
-                                    Developer
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                @error('roles')
-                                <small class="form-text text-danger">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" onkeypress="return isNumberKey(event)">
                         @error('phone')

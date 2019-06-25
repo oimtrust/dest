@@ -22,7 +22,7 @@ Trashed Testcases
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Filters</h4>
-                <form action="{{ route('testcases.trash') }}">
+                <form action="{{ route('trash.testcases') }}">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">

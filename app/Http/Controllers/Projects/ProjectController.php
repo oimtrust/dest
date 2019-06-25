@@ -6,19 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Gate;
 use App\Domain\Projects\Entities\Project;
 use App\Domain\UserManagement\Entities\User;
 
 class ProjectController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (Gate::allows('manage-projects')) return $next($request);
-            abort(403, "You don't have access!");
-        });
-    }
 
     /**
      * Display a listing of the resource.
@@ -222,9 +214,9 @@ class ProjectController extends Controller
         if ($project->trashed()) {
             $project->restore();
         } else {
-            return redirect()->route('projects.trash')->with('status', 'Project is not in trash');
+            return redirect()->route('trash.projects')->with('status', 'Project is not in trash');
         }
-        return redirect()->route('projects.trash')->with('status', 'Project successfully restored');
+        return redirect()->route('trash.projects')->with('status', 'Project successfully restored');
     }
 
     public function deletePermanent($id)
@@ -233,7 +225,7 @@ class ProjectController extends Controller
         $logo       = $project->logo;
 
         if (!$project->trashed()) {
-            return redirect()->route('projects.trash')->with('status', 'Can not delete permanent active project');
+            return redirect()->route('trash.projects')->with('status', 'Can not delete permanent active project');
         } else {
             $project->forceDelete();
 
@@ -246,7 +238,7 @@ class ProjectController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('projects.trash')->with('status', 'Project permanently deleted!');
+            return redirect()->route('trash.projects')->with('status', 'Project permanently deleted!');
         }
     }
 }

@@ -7,20 +7,12 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use App\Domain\UserManagement\Entities\User;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (Gate::allows('manage-users')) return $next($request);
-            abort(403, "You don't have access!");
-        });
-    }
 
     /**
      * Display a listing of the resource.
@@ -76,7 +68,6 @@ class UserController extends Controller
             'name'      => 'required|min:5|max:100',
             'email'     => 'required|unique:users|email',
             'password'  => 'required|min:8',
-            'roles'     => 'required',
             'address'   => 'required|min:15',
             'phone'     => 'required|digits_between:10,16',
             'avatar'    => 'required|image'
@@ -87,7 +78,6 @@ class UserController extends Controller
         $new_user->name         = $request->get('name');
         $new_user->email        = $request->get('email');
         $new_user->password     = Hash::make($request->get('password'));
-        $new_user->roles        = json_encode($request->get('roles'));
         $new_user->phone        = $request->get('phone');
         $new_user->address      = $request->get('address');
         $new_user->created_by   = Auth::user()->id;
@@ -140,7 +130,6 @@ class UserController extends Controller
         $validation = \Validator::make($request->all(), [
             'name'      => 'required|min:5|max:100',
             'email'     => 'required|email',
-            'roles'     => 'required',
             'address'   => 'required|min:15',
             'phone'     => 'required|digits_between:10,16',
         ])->validate();
@@ -149,7 +138,6 @@ class UserController extends Controller
 
         $user->name         = $request->get('name');
         $user->email        = $request->get('email');
-        $user->roles        = json_encode($request->get('roles'));
         $user->status       = $request->get('status');
         $user->address      = $request->get('address');
         $user->phone        = $request->get('phone');
@@ -208,9 +196,9 @@ class UserController extends Controller
         if ($user->trashed()) {
             $user->restore();
         } else {
-            return redirect()->route('users.trash')->with('status', 'User is not in trash');
+            return redirect()->route('trash.users')->with('status', 'User is not in trash');
         }
-        return redirect()->route('users.trash')->with('status', 'User successfully restored');
+        return redirect()->route('trash.users')->with('status', 'User successfully restored');
     }
 
     public function deletePermanent($id)
@@ -219,7 +207,7 @@ class UserController extends Controller
         $avatar  = $user->avatar;
 
         if (!$user->trashed()) {
-            return redirect()->route('users.trash')->with('status', 'Can not delete permanent active user');
+            return redirect()->route('trash.users')->with('status', 'Can not delete permanent active user');
         } else {
             $user->forceDelete();
 
@@ -232,7 +220,7 @@ class UserController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('users.trash')->with('status', 'User permanently deleted!');
+            return redirect()->route('trash.users')->with('status', 'User permanently deleted!');
         }
     }
 

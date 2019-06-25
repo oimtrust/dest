@@ -59,51 +59,6 @@ Edit User
                     </div>
 
                     <div class="form-group">
-                        <label class="">Roles</label>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input @error('roles') is-invalid @enderror" id="admin" name="roles[]" value="ADMIN" {{ $user->hasRole('ADMIN') == 'PM' ? ' checked' : '' }}>
-                                    Admin
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="pm" name="roles[]" value="PM" {{ $user->hasRole('PM') == 'PM' ? ' checked' : '' }}>
-                                    Project Manager
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="qa" name="roles[]" value="QA" {{ $user->hasRole('QA') == 'PM' ? ' checked' : '' }}>
-                                    Quality Assurance
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="dev" name="roles[]" value="DEV" {{ $user->hasRole('PM') == 'DEV' ? ' checked' : '' }}>
-                                    Developer
-                                </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                @error('roles')
-                                <small class="form-text text-danger">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label>Status</label>
                         <div class="row">
                             <div class="col-sm-2">

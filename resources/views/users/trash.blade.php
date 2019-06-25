@@ -22,7 +22,7 @@ Trashed Users
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Filters</h4>
-                <form action="{{ route('users.trash') }}">
+                <form action="{{ route('trash.users') }}">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">

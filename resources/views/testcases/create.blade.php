@@ -52,7 +52,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                            <select name="status" id="status" class="form-control @error('status') is-invalid @enderror" onchange="showField(this.options[this.selectedIndex].value)">
+                                <option value="NONE" selected>NONE</option>
+                                <option value="PASS">PASS</option>
+                                <option value="FAIL">FAIL</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div id="other">
+                                <input type="text" name="other_status" class="form-control">
+                            </div>
                             @error('status')
                             <small class="form-text text-danger">
                                 {{ $message }}
@@ -135,6 +143,15 @@ $('#scenario_id').select2({
         }
     }
 });
+
+function showField(name) {
+    if (name == 'Other') {
+        document.getElementById('other').style.display = 'block';
+    } else {
+        document.getElementById('other').style.display = 'none';
+    }
+}
+
 
 ClassicEditor
 .create( document.querySelector( '#expected_result' ) )

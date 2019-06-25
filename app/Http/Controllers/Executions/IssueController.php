@@ -204,7 +204,7 @@ class IssueController extends Controller
         } else {
             $issue->forceDelete();
         }
-        return redirect()->route('issues.trash')->with('status', 'Issue permanently deleted!');
+        return redirect()->route('trash.issues')->with('status', 'Issue permanently deleted!');
     }
 
     public function restore($id)
@@ -214,9 +214,9 @@ class IssueController extends Controller
         if ($issue->trashed()) {
             $issue->restore();
         } else {
-            return redirect()->route('issues.trash')->with('status', 'Issue is not in trash');
+            return redirect()->route('trash.issues')->with('status', 'Issue is not in trash');
         }
-        return redirect()->route('issues.trash')->with('status', 'Issue successfully restored');
+        return redirect()->route('trash.issues')->with('status', 'Issue successfully restored');
     }
 
     public function ajaxAssignedTo(Request $request, $id)
