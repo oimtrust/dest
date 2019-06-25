@@ -3,9 +3,9 @@
 namespace App\Domain\Projects\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Domain\Requirements\Entities\Story;
 use App\Domain\UserManagement\Entities\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Domain\Requirements\Entities\Story;
 
 class Project extends Model
 {
