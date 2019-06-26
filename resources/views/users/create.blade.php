@@ -87,7 +87,7 @@ Create User
 
                     <div class="form-group">
                         <label>Avatar</label>
-                        <input type="file" name="avatar" class="file-upload-default @error('avatar') is-invalid @enderror">
+                        <input type="file" name="avatar" id="avatar" class="file-upload-default @error('avatar') is-invalid @enderror">
                         <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                             <span class="input-group-append">
@@ -111,7 +111,7 @@ Create User
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Save</button>
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="pressSave">Save</button>
                     <a href="{{ route('users.index') }}" class="btn btn-light">Cancel</a>
                 </form>
             </div>
