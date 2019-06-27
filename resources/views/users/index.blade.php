@@ -109,14 +109,16 @@ Users
                                 </button>
                             </a>
 
+                            @if ($user->id != 1)
                             <form method="POST" action="{{ route('users.destroy', ['id' => $user->id]) }}"
                                 onsubmit="return confirm('Are you sure to move to trash?')">
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-inverse-danger btn-rounded btn-icon btn-delete" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <button type="submit" id="delete{{ $user->id }}" class="btn btn-inverse-danger btn-rounded btn-icon btn-delete" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i class="mdi mdi-delete"></i>
                                 </button>
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
