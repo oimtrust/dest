@@ -103,8 +103,8 @@ Users
                             <a href="{{ route('users.show', ['id' => $user->id]) }}">
                                 <button type="button" class="btn btn-inverse-info btn-rounded btn-icon" data-toggle="tooltip" data-placement="top" title="Detail"><i class="mdi mdi-eye"></i></button>
                             </a>
-                            <a href="{{ route('users.edit', ['id' => $user->id]) }}">
-                                <button type="button" class="btn btn-inverse-warning btn-rounded btn-icon" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="update{{ $user->id }}">
+                                <button type="button" class="btn btn-inverse-warning btn-rounded btn-icon" data-toggle="tooltip" data-placement="top" title="Edit" >
                                     <i class="mdi mdi-pencil"></i>
                                 </button>
                             </a>
