@@ -69,7 +69,7 @@
                             </td>
                             <td>
                                 @if ($user->id != 1)
-                                    <button type="button" class="btn btn-inverse-success btn-rounded btn-icon btn-role" setid="{{ $user->id }}" data-x="{{ $user->id }}"><i class="mdi mdi-plus"></i></button>
+                                    <button type="button" class="btn btn-inverse-success btn-rounded btn-icon btn-role" setid="{{ $user->id }}" data-x="{{ $user->id }}"><i class="mdi mdi-plus" id="modal{{ $user->id }}"></i></button>
                                 @endif
                             </td>
                         </tr>
