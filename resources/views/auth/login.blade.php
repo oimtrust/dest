@@ -55,7 +55,7 @@
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
-                                    {{ __('SIGN IN') }}
+                                    SIGN IN
                                 </button>
                             </div>
                         </form>
