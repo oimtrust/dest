@@ -1,0 +1,20 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/dest.test\/_debugbar\/assets\/javascript?v=1553506748 2:27454 Uncaught TypeError: Cannot read property 'style' of undefined",
+        "source": "javascript",
+        "timestamp": 1561706758615
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/dest.test\/projects 412:36 Uncaught TypeError: Cannot read property 'style' of null",
+        "source": "javascript",
+        "timestamp": 1561706773039
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/dest.test\/projects\/create 351:36 Uncaught TypeError: Cannot read property 'style' of null",
+        "source": "javascript",
+        "timestamp": 1561706776465
+    }
+]
