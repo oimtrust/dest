@@ -7,7 +7,7 @@ class LoginCest
     }
 
     // tests
-    public function tryToTest(AcceptanceTester $I)
+    public function tryToLogin(AcceptanceTester $I)
     {
         $I->amOnPage('/login');
         $I->fillField('email', 'admin@gmail.com');
