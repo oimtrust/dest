@@ -15,4 +15,3 @@ modules:
             environment_file: .env.testing
         - \Helper\Acceptance
     step_decorators: ~
-

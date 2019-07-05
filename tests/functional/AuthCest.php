@@ -36,7 +36,7 @@ class AuthCest
 
     public function loginUsingCredentials(FunctionalTester $I)
     {
-        $I->haveRecord('users', $this->userAttributes);
+        // $I->haveRecord('users', $this->userAttributes);
         $I->amLoggedAs(['email' => 'admin@gmail.com', 'password' => 'rahasia']);
         $I->amOnPage('/home');
         $I->seeCurrentUrlEquals('/home');
