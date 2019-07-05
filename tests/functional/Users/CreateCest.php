@@ -3,6 +3,7 @@
 use FunctionalTester;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Domain\UserManagement\Entities\User;
 
 class CreateCest
 {
@@ -35,5 +36,30 @@ class CreateCest
         $I->attachFile('avatar', 'face-test.jpg');
         $I->fillField('address', 'Malang');
         $I->click('button[type=submit]');
+    }
+
+    public function createRecordOnUsersTable(FunctionalTester $I)
+    {
+        $I->haveInDatabase('users', [
+            'name'              => 'Fathur Rohim',
+            'email'             => 'rohim@gmail.com',
+            'password'          => Hash::make('rahasia'),
+            'remember_token'    => Str::random(10),
+            'address'           => 'Malang City',
+            'phone'             => '08987867564',
+            'status'            => 'ACTIVE',
+            'created_by'        => 1,
+        ]);
+
+        $I->amLoggedAs(['email' => 'admin@gmail.com', 'password' => 'rahasia']);
+        $I->amOnPage('/users');
+        $I->see('Fathur Rohim');
+    }
+
+    public function seeRecordOnUsersTable(FunctionalTester $I)
+    {
+        $user   = User::withTrashed()->orderBy('id', 'desc')->first();
+
+        $I->seeInDatabase('users', ['name' => $user->name, 'email' => $user->email, 'address' => $user->address, 'phone' => $user->phone]);
     }
 }

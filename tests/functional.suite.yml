@@ -11,5 +11,13 @@ modules:
         # add a framework module here
         - Laravel5:
             environment_file: .env.testing
+        - Db:
+            dsn: 'mysql:host=localhost;dbname=dest_app'
+            user: 'root'
+            password: 'password'
+            populate: true # run populator before all tests
+            cleanup: true # run populator before each test
+            dump: 'tests/_data/dump-dest_app-201907051013.sql'
+            # populator: 'mysql -u $user -ppassword -h $host $dbname < $dump'
         - \Helper\Functional
     #step_decorators: ~
