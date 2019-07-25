@@ -6,7 +6,7 @@
 
 ## Screenshot
 * Dashboard :
-   
+   ![](public/images/screenshots/login.png)
 
 ## Credits
 - [Purple Admin](https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template "Purple Admin")
