@@ -5,8 +5,20 @@
 * Tracking Project by User Stories
 
 ## Screenshot
-* Dashboard :
+* Login :
    ![](public/images/screenshots/login.png)
+   
+* Dashboard
+   ![](public/images/screenshots/dashboard.png)
+   
+* List Projects
+   ![](public/images/screenshots/create-project.png)
+   
+* List Stories
+   ![](public/images/screenshots/create-story.png)
+  
+* Comments Issue
+   ![](public/images/screenshots/comentar.png)
 
 ## Credits
 - [Purple Admin](https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template "Purple Admin")
