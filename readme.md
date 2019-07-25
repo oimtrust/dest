@@ -1,7 +1,12 @@
 <p align="center"><img src="https://i.imgur.com/aBCfwFC.png"></p>
 
 ## About Dest
-Under Development :laughing:
+* Management Projects for QA (Quality Assurance) and Team (Developer, Project Manager)
+* Tracking Project by User Stories
+
+## Screenshot
+* Dashboard :
+   
 
 ## Credits
 - [Purple Admin](https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template "Purple Admin")

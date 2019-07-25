@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="isvXIx6RX42Knrj9niUI86J2rzQ0cheOx5kgCbQD">
+
+    <title>Dest Create User
+</title>
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="http://localhost/purpleadmin/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="http://localhost/purpleadmin/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="http://localhost/plugins/selectjs-4.0.7/css/select2.min.css">
+    <link rel="stylesheet" href="http://localhost/plugins/mdi/css/materialdesignicons.css">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link href="http://localhost/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="http://localhost/images/dest-logos/favicon.png" />
+</head>
+<body onload="hideField()">
+    <div class="container-scroller">
+            <!-- partial:partials/_navbar -->
+            <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="http://localhost/home"><img src="http://localhost/images/dest-logos/dest-v1-300x66.png" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="http://localhost/home"><img src="http://localhost/images/dest-logos/dest-v1-150x150.png" alt="logo"/></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <div class="search-field d-none d-md-block">
+        <form class="d-flex align-items-center h-100" action="#">
+            <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <i class="input-group-text border-0 mdi mdi-magnify"></i>
+            </div>
+            <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+            </div>
+        </form>
+        </div>
+        <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                <div class="nav-profile-img">
+                                        <img src="http://localhost/images/face.jpg" alt="image">
+                                    <span class="availability-status online"></span>
+            </div>
+
+            <div class="nav-profile-text">
+                <p class="mb-1 text-black" id="clickName">Admin</p>
+            </div>
+            </a>
+
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="http://localhost/profile?id=1">
+                <i class="mdi mdi-account mr-2 text-success"></i>
+                My Profile
+                            </a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="http://localhost/logout"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="mdi mdi-logout mr-2 text-primary"></i>
+                Signout
+            </a>
+            <form id="logout-form" action="http://localhost/logout" method="POST">
+                <input type="hidden" name="_token" value="isvXIx6RX42Knrj9niUI86J2rzQ0cheOx5kgCbQD">            </form>
+            </div>
+        </li>
+        <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i class="mdi mdi-bell-outline"></i>
+                                                            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+            <h6 class="p-3 mb-0">Notifications</h6>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="p-3 mb-0 text-center"><a href="http://localhost/notifications">Show More...</a></h6>
+                        </div>
+        </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+</nav>
+            <!-- partial -->
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:partials/_sidebar -->
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+        <a href="#" class="nav-link">
+                        <div class="nav-profile-image">
+                                <img src="http://localhost/images/face.jpg" alt="image">
+                            <span class="login-status online"></span> <!--change to offline or busy as needed-->
+            </div>
+
+            <div class="nav-profile-text d-flex flex-column">
+            <span class="font-weight-bold mb-2">Admin</span>
+            <span class="text-secondary text-small">admin@gmail.com</span>
+            </div>
+                        <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="http://localhost/home">
+            <span class="menu-title">Dashboard</span>
+            <i class="mdi mdi-home-outline menu-icon"></i>
+        </a>
+        </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="http://localhost/users">
+                  <span class="menu-title">Users</span>
+                  <i class="mdi mdi-account-outline menu-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#trash" aria-expanded="false" aria-controls="trash">
+                    <span class="menu-title">User Privileges</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-account-key-outline menu-icon"></i>
+                </a>
+                <div class="collapse" id="trash">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/roles">Roles</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/userrole">User Roles</a></li>
+                    </ul>
+                </div>
+            </li>
+        
+                    <li class="nav-item">
+                <a class="nav-link" href="http://localhost/projects">
+                    <span class="menu-title">Projects</span>
+                    <i class="mdi mdi-briefcase-outline menu-icon"></i>
+                </a>
+            </li>
+        
+                    <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#myprojects" aria-expanded="false" aria-controls="myprojects">
+                    <span class="menu-title">My Projects</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-checkbox-multiple-marked-outline menu-icon"></i>
+                </a>
+                <div class="collapse" id="myprojects">
+                    <ul class="nav flex-column sub-menu">
+                                                    <li class="nav-item">
+                                <a href="http://localhost/menus/index/1" class="nav-link">
+                                    Dest App
+                                </a>
+                            </li>
+                                                    <li class="nav-item">
+                                <a href="http://localhost/menus/index/2" class="nav-link">
+                                    Samko
+                                </a>
+                            </li>
+                                            </ul>
+                </div>
+            </li>
+        
+                <li class="nav-item">
+            <a class="nav-link" href="http://localhost/issues">
+                <span class="menu-title">My Issues</span>
+                <i class="mdi mdi-bug-outline menu-icon"></i>
+            </a>
+        </li>
+        
+                    <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#trashs" aria-expanded="false" aria-controls="trashs">
+                    <span class="menu-title">Trash</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-delete-variant menu-icon"></i>
+                </a>
+                <div class="collapse" id="trashs">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/users">Users</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/projects">Projects</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/stories">Stories</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/features">Features</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/scenarios">Scenarios</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/testcases">Testcases</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="http://localhost/trash/issues">Issues</a></li>
+                    </ul>
+                </div>
+            </li>
+            </ul>
+</nav>
+
+                <!-- partial -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                    <div class="page-header">
+    <h3 class="page-title">
+        Create User
+    </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="http://localhost/home">Home</a></li>
+        <li class="breadcrumb-item"><a href="http://localhost/users">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Create User</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Create User</h4>
+
+                
+                <form method="POST" action="http://localhost/users" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="isvXIx6RX42Knrj9niUI86J2rzQ0cheOx5kgCbQD">                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control " id="name" name="name">
+                                            </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control " id="email" name="email">
+                                            </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control " id="password" name="password" value="destPassword">
+                            <div class="input-group-append">
+                                <button class="btn btn-sm btn-gradient-primary" onclick="showPassword()" type="button">
+                                    <i class="mdi mdi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">
+                            Default Password : <code>destPassword</code>
+                        </small>
+                                            </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control " id="phone" name="phone" onkeypress="return isNumberKey(event)">
+                                            </div>
+
+                    <div class="form-group">
+                        <label>Avatar</label>
+                        <input type="file" name="avatar" id="avatar" class="file-upload-default ">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                            <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                                            </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control " id="address" name="address" rows="4"></textarea>
+                                            </div>
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="pressSave">Save</button>
+                    <a href="http://localhost/users" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                    <!-- partial:partials/_footer -->
+                    <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="#">Dest</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i> Fathur Rohim</span>
+    </div>
+</footer>
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+
+<!-- Scripts -->
+<script src="http://localhost/js/jquery-3.4.1.js"></script>
+<!-- plugins:js -->
+<script src="http://localhost/purpleadmin/js/vendor.bundle.base.js"></script>
+<script src="http://localhost/purpleadmin/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="http://localhost/js/off-canvas.js"></script>
+<script src="http://localhost/js/misc.js"></script>
+
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="http://localhost/js/dashboard.js"></script>
+<script src="http://localhost/js/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+// Visibility for password
+function showPassword() {
+    var field = document.getElementById("password");
+    if (field.type === "password") {
+        field.type = "text";
+    } else {
+        field.type = "password";
+    }
+}
+
+// Number Input
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
+<script src="http://localhost/js/file-upload.js"></script>
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+
+function hideField() {
+    document.getElementById('other').style.display = 'none';
+}
+</script>
+<!-- End custom js for this page-->
+</body>
+
+</html>
