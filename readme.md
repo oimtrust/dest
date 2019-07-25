@@ -1,7 +1,24 @@
 <p align="center"><img src="https://i.imgur.com/aBCfwFC.png"></p>
 
 ## About Dest
-Under Development :laughing:
+* Management Projects for QA (Quality Assurance) and Team (Developer, Project Manager)
+* Tracking Project by User Stories
+
+## Screenshot
+* Login :
+   ![](public/images/screenshots/login.png)
+   
+* Dashboard
+   ![](public/images/screenshots/dashboard.png)
+   
+* List Projects
+   ![](public/images/screenshots/create-project.png)
+   
+* List Stories
+   ![](public/images/screenshots/create-story.png)
+  
+* Comments Issue
+   ![](public/images/screenshots/comentar.png)
 
 ## Credits
 - [Purple Admin](https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template "Purple Admin")
