@@ -1,68 +1,72 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-center auth">
-            <div class="row w-100">
-                <div class="col-lg-4 mx-auto">
-                    <div class="auth-form-light text-left p-5">
-                        <div class="brand-logo">
-                            <img src="{{ asset('images/dest-logos/dest-v1.png') }}">
-                        </div>
-                        <h4>Hello! let's get started</h4>
-                        <h6 class="font-weight-light">Sign in to continue.</h6>
-                        @if (session('status'))
-                        <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
-                            {{ session('status') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
-                        <form class="pt-3" method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-group">
-                                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="my-2 d-flex justify-content-between align-items-center">
-                                <div class="form-check">
-                                    <label class="form-check-label text-muted" for="remember">
-                                        <input type="checkbox" class="form-check-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        Keep me signed in
-                                    </label>
-                                </div>
-                                @if (Route::has('password.request'))
-                                    <a class="auth-link text-black" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
-                                    {{ __('SIGN IN') }}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+<div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="login-brand">
+              <img src="{{ asset('images/dest-logos/dest-blue.png') }}" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
+
+            <div class="card card-primary">
+              <div class="card-header"><h4>Login</h4></div>
+
+              <div class="card-body">
+                <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                    @csrf
+                    <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" tabindex="1" autofocus>
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <div class="d-block">
+                            <label for="password" class="control-label">Password</label>
+                            {{-- @if (Route::has('password.request'))
+                            <div class="float-right">
+                                <a href="{{ route('password.request') }}" class="text-small">
+                                Forgot Password?
+                                </a>
+                            </div>
+                            @endif --}}
+                        </div>
+                        <input id="password" type="password" class="form-control" name="password" tabindex="2">
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                        <label class="custom-control-label" for="remember-me">Remember Me</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Login
+                        </button>
+                    </div>
+                </form>
+
+              </div>
+            </div>
+            <div class="simple-footer">
+              Copyright &copy; Dest 2019
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 </div>
 @endsection
