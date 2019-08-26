@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('stisla/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/assets/css/components.css') }}">
 </head>
-<body onload="hideField()">
+<body>
     <div id="app">
         <div class="main-wrapper">
             @include('partials._navbar')
@@ -58,10 +58,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-
-function hideField() {
-    document.getElementById('other').style.display = 'none';
-}
 </script>
 <!-- End custom js for this page-->
 </body>
