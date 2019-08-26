@@ -1,6 +1,8 @@
-<footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="#">Dest</a>. All rights reserved.</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i> Fathur Rohim</span>
+<footer class="main-footer">
+    <div class="footer-left">
+        Copyright © 2019 <a href="https://github.com/oimtrust/dest" target="_blank">Dest</a>. All rights reserved. <div class="bullet"></div> Hand-crafted & made with <i class="far fa-heart text-danger"></i> Fathur Rohim
+    </div>
+    <div class="footer-right">
+    1.0.0-beta1
     </div>
 </footer>
