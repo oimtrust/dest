@@ -16,7 +16,6 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome-5.10.2/css/all.css') }}">
-    <script defer src="{{ asset('fonts/fontawesome-5.10.2/js/all.js') }}"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('stisla/assets/css/style.css') }}">
