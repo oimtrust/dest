@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $user->password     = Hash::make($request->get('password_confirmation'));
         $user->save();
 
-        return redirect()->route('profile.index', ['id' => $user->id])->with('status', 'Password successfully updated');
+        return redirect()->route('profile.index')->with('status', 'Password successfully updated');
     }
 
     public function edit($id)
