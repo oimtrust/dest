@@ -56,7 +56,7 @@
                 @endif
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('profile.index', ['id' => Auth::user()->id]) }}" class="dropdown-item has-icon">
+                <a href="{{ route('profile.index') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 <div class="dropdown-divider"></div>

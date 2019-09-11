@@ -46,7 +46,7 @@
 <script src="{{ asset('stisla/assets/js/stisla.js') }}"></script>
 
 <!-- JS Libraies -->
-
+<script src="{{ asset('stisla/modules/jquery_upload_preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 <!-- Template JS File -->
 <script src="{{ asset('stisla/assets/js/scripts.js') }}"></script>
 <script src="{{ asset('stisla/assets/js/custom.js') }}"></script>

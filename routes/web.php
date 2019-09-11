@@ -33,7 +33,7 @@ Route::middleware(['authenticated'])->group(function () {
      */
     Route::put('profile/updatepassword', 'UserManagement\ProfileController@updatePassword')->name('updatePassword');
     Route::get('profile', 'UserManagement\ProfileController@index')->name('profile.index');
-    Route::get('/profile/edit/{id}', 'UserManagement\ProfileController@edit')->name('profile.edit');
+    Route::get('/profile/edit', 'UserManagement\ProfileController@edit')->name('profile.edit');
     Route::put('/profile/update/{id}', 'UserManagement\ProfileController@update')->name('profile.update');
 
      /**
