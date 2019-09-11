@@ -60,10 +60,12 @@ Profile
                                         <div class="col-sm-12 col-md-7">
                                             @if ($profile->avatar)
                                                 <figure class="author-box">
-                                                    <img src="{{ asset('stisla/assets/img/avatar/avatar-1.png') }}" alt="..." class="rounded-circle author-box-picture">
+                                                    <img src="{{ asset('storage/' . $profile->avatar) }}" alt="..." class="rounded-circle author-box-picture">
                                                 </figure>
                                             @else
-                                            <input type="text" class="form-control" value="No have avatar" readonly>
+                                                <figure class="author-box">
+                                                    <img src="{{ asset('stisla/assets/img/avatar/avatar-1.png') }}" alt="..." class="rounded-circle author-box-picture">
+                                                </figure>
                                             @endif
                                         </div>
                                     </div>
@@ -76,7 +78,7 @@ Profile
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                         <div class="col-sm-12 col-md-7">
-                                            <button class="btn btn-primary">Update Profile</button>
+                                            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +138,7 @@ Profile
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                         <div class="form-group row mb-4">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                             <div class="col-sm-12 col-md-7">

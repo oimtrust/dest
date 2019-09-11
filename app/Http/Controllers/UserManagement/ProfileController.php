@@ -43,9 +43,9 @@ class ProfileController extends Controller
         return redirect()->route('profile.index')->with('status', 'Password successfully updated');
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $profile            = User::find($id);
+        $profile            = User::find(Auth::user()->id);
         return view('profile.edit', ['profile' => $profile]);
     }
 
@@ -53,7 +53,7 @@ class ProfileController extends Controller
     {
         $validation = \Validator::make($request->all(), [
             'name'      => 'required|min:5|max:100',
-            'email'     => 'required|email',
+            'email'     => 'required|email|unique:users,email,'.$id.',id',
             'address'   => 'required|min:15',
             'phone'     => 'required|digits_between:10,16',
         ])->validate();
@@ -75,6 +75,6 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect()->route('profile.edit', ['id' => $id])->with('status', 'Profile successfully updated');
+        return redirect()->route('profile.edit')->with('status', 'Profile successfully updated');
     }
 }
