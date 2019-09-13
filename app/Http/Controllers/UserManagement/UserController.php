@@ -43,7 +43,7 @@ class UserController extends Controller
             }
         }
 
-        return view('users.index', ['users' => $users])->with('no', ($request->input('page', 1) - 1) * 10);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
