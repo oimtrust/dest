@@ -9,6 +9,9 @@ Users
     <section class="section">
         <div class="section-header">
         <h1>Users</h1>
+        <div class="section-header-button">
+            <a href="{{ route('users.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus-circle"></i> Create User</a>
+        </div>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
             <div class="breadcrumb-item">Users</div>
@@ -26,20 +29,26 @@ Users
                             <h4>Users</h4>
                         </div>
                         <div class="card-body">
-                            <div class="float-left">
-                                <a href="{{ route('users.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus-circle"></i> Create User</a>
-                            </div>
+                            <form action="{{ route('users.index') }}">
+                                <div class="float-left">
+                                    <div class="form-group">
+                                        <select class="form-control selectric" id="status" name="status">
+                                            <option value="">Select Status</option>
+                                            <option value="ACTIVE">ACTIVE</option>
+                                            <option value="INACTIVE">INACTIVE</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                            <div class="float-right">
-                                <form action="{{ route('users.index') }}">
+                                <div class="float-right">
                                     <div class="input-group">
                                         <input name="keyword" type="text" class="form-control" placeholder="Search Names...">
                                         <div class="input-group-append">
                                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
 
                             <div class="clearfix mb-3"></div>
                             @if (session('status'))
@@ -133,4 +142,15 @@ Users
         </div>
     </section>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+// if(jQuery().selectric) {
+//     $(".selectric").selectric({
+//       disableOnMobile: false,
+//       nativeOnMobile: false
+//     });
+// }
+</script>
 @endsection
