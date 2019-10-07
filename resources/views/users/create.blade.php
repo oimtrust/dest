@@ -5,118 +5,142 @@ Create User
 @endsection
 
 @section('content')
-<div class="page-header">
-    <h3 class="page-title">
-        Create User
-    </h3>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Create User</li>
-        </ol>
-    </nav>
-</div>
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+        <div class="section-header-back">
+            <a href="{{ route('users.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <h1>Create User</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></div>
+            <div class="breadcrumb-item">Create User</div>
+        </div>
+        </div>
 
-<div class="row">
-        <div class="col-12 grid-margin stretch-card">
+        <div class="section-body">
+        <h2 class="section-title">Create User</h2>
+        <p class="section-lead">
+            On this page, you can add user data by inputting all data in the available fields.
+        </p>
+
+        <div class="row">
+            <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                <h4 class="card-title">Create User</h4>
-
-                @if (session('status'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="card-header">
+                <h4>Create User</h4>
                 </div>
-                @endif
-
                 <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
-                        @error('name')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
-                        @error('email')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="destPassword">
-                            <div class="input-group-append">
-                                <button class="btn btn-sm btn-gradient-primary" onclick="showPassword()" type="button">
-                                    <i class="mdi mdi-eye"></i>
+                    <div class="card-body">
+                        @if (session('status'))
+                        <div class="alert alert-{{ session('type') }} alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                <span>×</span>
                                 </button>
+                                {{ session('status') }}
                             </div>
                         </div>
-                        <small class="form-text text-muted">
-                            Default Password : <code>destPassword</code>
-                        </small>
-                        @error('password')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
+                        @endif
 
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" onkeypress="return isNumberKey(event)">
-                        @error('phone')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>Avatar</label>
-                        <input type="file" name="avatar" id="avatar" class="file-upload-default @error('avatar') is-invalid @enderror">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                            <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                            </span>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @error('avatar')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
 
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="4"></textarea>
-                        @error('address')
-                        <small class="form-text text-danger">
-                            {{ $message }}
-                        </small>
-                        @enderror
-                    </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                                @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-gradient-primary mr-2" id="pressSave">Save</button>
-                    <a href="{{ route('users.index') }}" class="btn btn-light">Cancel</a>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password</label>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="input-group">
+                                    <input type="password" value="destPassword" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button" onclick="showPassword()"><i class="far fa-eye"></i></button>
+                                    </div>
+                                    @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <small class="form-text text-muted">
+                                    Default Password : <code>destPassword</code>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Phone</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" onkeypress="return isNumberKey(event)">
+                                @error('phone')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Avatar</label>
+                            <div class="col-sm-12 col-md-7">
+                                <div id="image-preview" class="image-preview">
+                                    <label for="image-upload" id="image-label">Choose File</label>
+                                    <input type="file" name="avatar" id="image-upload" class="@error('avatar') is-invalid @enderror">
+                                </div>
+                            </div>
+                            @error('avatar')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Address</label>
+                            <div class="col-sm-12 col-md-7">
+                                <textarea name="address" class="form-control @error('address') is-invalid @enderror" spellcheck="false" style="margin-top: 0px; margin-bottom: 0px; height: 104px;"></textarea>
+                            </div>
+                            @error('address')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
+            </div>
         </div>
-    </div>
+        </div>
+    </section>
 </div>
 @endsection
 
@@ -139,6 +163,16 @@ function isNumberKey(evt){
         return false;
     return true;
 }
+
+$.uploadPreview({
+  input_field: "#image-upload",   // Default: .image-upload
+  preview_box: "#image-preview",  // Default: .image-preview
+  label_field: "#image-label",    // Default: .image-label
+  label_default: "Choose File",   // Default: Choose File
+  label_selected: "Change File",  // Default: Change File
+  no_label: false,                // Default: false
+  success_callback: null          // Default: null
+});
 </script>
 <script src="{{ asset('js/file-upload.js') }}"></script>
 @endsection

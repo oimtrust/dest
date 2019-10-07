@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $new_user->save();
 
-        return redirect()->route('users.create')->with('status', 'User successfully created');
+        return redirect()->route('users.create')->with(['status' => 'User successfully created', 'type' => 'success']);
     }
 
     /**
@@ -174,7 +174,7 @@ class UserController extends Controller
        $user->save();
        $user->delete();
 
-       return redirect()->route('users.index')->with('status', 'User moved to trash');
+       return redirect()->route('users.index')->with(['status' => 'User moved to trash', 'type' => 'warning']);
     }
 
     public function trash(Request $request)
