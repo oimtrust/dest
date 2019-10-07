@@ -54,6 +54,8 @@
 <script src="{{ asset('stisla/modules/jquery_upload_preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 <script src="{{ asset('stisla/modules/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('stisla/modules/selectric/public/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('stisla/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+{{-- <script src="{{ asset('stisla/modules/jquery-ui-dist/jquery-ui.min.js') }}"></script> --}}
 
 <!-- Template JS File -->
 <script src="{{ asset('stisla/assets/js/scripts.js') }}"></script>
