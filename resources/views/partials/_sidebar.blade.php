@@ -8,10 +8,27 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span> Dashboard</span></a></li>
+            <li class="{{ setActive('home') }}"><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span> Dashboard</span></a></li>
             @if (Auth::user()->roles()->where('slug', 'admin')->first())
                 <li class="menu-header">Users & Privileges</li>
-                <li><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-users"></i><span>Users</span></a></li>
+                <li class="{{ setActive('users.index') }}"><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-users"></i><span>Users</span></a></li>
+                @if (setActive('roles.index'))
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i><span>Privileges</span></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                            <li><a class="nav-link" href="{{ route('userrole.index') }}">User Roles</a></li>
+                        </ul>
+                    </li>
+                @elseif(setActive('userrole.index'))
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i><span>Privileges</span></a>
+                        <ul class="dropdown-menu">
+                            <li ><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                            <li class="active"><a class="nav-link" href="{{ route('userrole.index') }}">User Roles</a></li>
+                        </ul>
+                    </li>
+                @else
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i><span>Privileges</span></a>
                     <ul class="dropdown-menu">
@@ -19,6 +36,8 @@
                         <li><a class="nav-link" href="{{ route('userrole.index') }}">User Roles</a></li>
                     </ul>
                 </li>
+                @endif
+
             @endif
             @if (Auth::user()->roles()->where('slug', '!=', 'developer')->first())
                 <li class="menu-header">Projects</li>
@@ -40,10 +59,10 @@
             @endif
             @if (Auth::user()->roles()->where('slug', 'admin')->first())
                 <li class="menu-header">Trash Bin</li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ setActive('trash.*') }}">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-trash"></i><span>Trash</span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="{{ route('trash.users') }}">Users</a></li>
+                        <li class="{{ setActive('trash.users') }}"><a class="nav-link" href="{{ route('trash.users') }}">Users</a></li>
                         <li><a class="nav-link" href="{{ route('trash.projects') }}">Projects</a></li>
                         <li><a class="nav-link" href="{{ route('trash.stories') }}">Stories</a></li>
                         <li><a class="nav-link" href="{{ route('trash.features') }}">Features</a></li>

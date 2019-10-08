@@ -43,7 +43,8 @@
         ],
         "files": [
             "app/Helpers/Menu.php",
-            "app/Helpers/Notification.php"
+            "app/Helpers/Notification.php",
+            "app/Helpers/Sidebar.php"
         ]
     },
     "autoload-dev": {
