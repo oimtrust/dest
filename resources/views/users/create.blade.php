@@ -174,5 +174,4 @@ $.uploadPreview({
   success_callback: null          // Default: null
 });
 </script>
-<script src="{{ asset('js/file-upload.js') }}"></script>
 @endsection
