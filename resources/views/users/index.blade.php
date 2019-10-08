@@ -143,14 +143,3 @@ Users
     </section>
 </div>
 @endsection
-
-@section('scripts')
-<script>
-// if(jQuery().selectric) {
-//     $(".selectric").selectric({
-//       disableOnMobile: false,
-//       nativeOnMobile: false
-//     });
-// }
-</script>
-@endsection
