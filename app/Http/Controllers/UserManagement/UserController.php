@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $new_user->save();
 
-        return redirect()->route('users.create')->with('status', 'User successfully created');
+        return redirect()->route('users.create')->with(['status' => 'User successfully created', 'type' => 'success']);
     }
 
     /**
@@ -127,12 +127,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validation = \Validator::make($request->all(), [
+        $validation = $request->validate([
             'name'      => 'required|min:5|max:100',
-            'email'     => 'required|email',
+            'email'     => 'required|unique:users,email,'.$id.',id',
             'address'   => 'required|min:15',
-            'phone'     => 'required|digits_between:10,16',
-        ])->validate();
+            'status'    => 'required',
+            'phone'     => 'required|digits_between:10,16'
+        ]);
 
         $user               = User::findOrFail($id);
 
@@ -153,7 +154,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.edit', ['id' => $id])->with('status', 'User successfully updated');
+        return redirect()->route('users.edit', ['id' => $id])->with(['status' => 'User successfully updated', 'type' => 'success']);
     }
 
     /**
@@ -174,7 +175,7 @@ class UserController extends Controller
        $user->save();
        $user->delete();
 
-       return redirect()->route('users.index')->with('status', 'User moved to trash');
+       return redirect()->route('users.index')->with(['status' => 'User moved to trash', 'type' => 'warning']);
     }
 
     public function trash(Request $request)
@@ -196,9 +197,9 @@ class UserController extends Controller
         if ($user->trashed()) {
             $user->restore();
         } else {
-            return redirect()->route('trash.users')->with('status', 'User is not in trash');
+            return redirect()->route('trash.users')->with(['status' => 'User is not in trash', 'type' => 'warning']);
         }
-        return redirect()->route('trash.users')->with('status', 'User successfully restored');
+        return redirect()->route('trash.users')->with(['status' => 'User successfully restored', 'type' => 'success']);
     }
 
     public function deletePermanent($id)
@@ -207,7 +208,7 @@ class UserController extends Controller
         $avatar  = $user->avatar;
 
         if (!$user->trashed()) {
-            return redirect()->route('trash.users')->with('status', 'Can not delete permanent active user');
+            return redirect()->route('trash.users')->with(['status' => 'Can not delete permanent active user', 'type' => 'warning']);
         } else {
             $user->forceDelete();
 
@@ -220,7 +221,7 @@ class UserController extends Controller
                      $e->getMessage();
                 }
             }
-            return redirect()->route('trash.users')->with('status', 'User permanently deleted!');
+            return redirect()->route('trash.users')->with(['status' => 'User permanently deleted!', 'type' => 'danger']);
         }
     }
 

@@ -80,7 +80,7 @@ Edit Profile
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Phone</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $profile->phone }}">
+                                <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" onkeypress="return isNumberKey(event)" value="{{ $profile->phone }}">
                                 @error('phone')
                                 <div class="invalid-feedback">
                                     {{ $message }}
