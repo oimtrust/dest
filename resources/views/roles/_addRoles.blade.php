@@ -1,15 +1,15 @@
 <!-- Modal -->
-<div class="modal fade modal-data" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+    <div class="modal-dialog " role="document">
         <div class="modal-content">
             <form method="POST" id="attachRole">
                 @csrf
-                <input type="hidden" name="_method" value="PUT">
+                @method('PUT')
 
                 <div class="modal-header">
                     <h5 class="modal-title">Choose Role to Attach User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -18,9 +18,9 @@
                         <select class="form-control @error('roles') is-invalid @enderror" id="roles" name="roles[]" multiple style="width: 100%">
                         </select>
                         @error('roles')
-                        <small class="form-text text-danger">
+                        <div class="invalid-feedback">
                             {{ $message }}
-                        </small>
+                        </div>
                         @enderror
                     </div>
                 </div>
@@ -35,7 +35,6 @@
 
 
 @section('scripts')
-<script src="{{ asset('plugins/selectjs-4.0.7/js/select2.min.js') }}"></script>
 <script>
 
 $( document ).ready(function() {
@@ -46,10 +45,13 @@ $( document ).ready(function() {
 
     if (status != null) {
         var templateAlert = `
-        <div class="alert alert-`+ status[0].type +` alert-dismissible fade show" role="alert">
-            `+ status[0].status +`
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span id="clearStatus" aria-hidden="true">&times;</span>
+        <div class="alert alert-`+ status[0].type +` alert-dismissible show fade" role="alert">
+            <div class="alert-body">
+                <button class="close" id="clearStatus" data-dismiss="alert">
+                <span>×</span>
+                </button>
+                `+ status[0].status +`
+            </div>
             </button>
         </div>`
         document.getElementById('alertTarget').innerHTML = templateAlert;
